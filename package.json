@@ -4,7 +4,8 @@
   "description": "generator for creating and viewing cards with employee information",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose test/"
+    "test": "jest --verbose test/",
+    "start": "node index.html"
   },
   "repository": {
     "type": "git",
