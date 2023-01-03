@@ -1,0 +1,25 @@
+{
+  "name": "work-force-team-generator",
+  "version": "1.0.0",
+  "description": "generator for creating and viewing cards with employee information",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UnbindingNote/work-force-team-generator.git"
+  },
+  "keywords": [
+    "work",
+    "force",
+    "team",
+    "generator"
+  ],
+  "author": "James VonLienen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UnbindingNote/work-force-team-generator/issues"
+  },
+  "homepage": "https://github.com/UnbindingNote/work-force-team-generator#readme"
+}
