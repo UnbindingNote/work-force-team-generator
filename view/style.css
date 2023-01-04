@@ -1,0 +1,15 @@
+/* Styling for the cards and the HTML page */
+.jumbotron {
+    border-radius: 0;
+}
+
+.employee-card {
+    box-shadow: 5px 5px 5px gray;
+    margin: 1rem;
+    border: none;
+    width: 16rem;
+}
+
+.card-body {
+    background-color: rgb(240, 240, 240);
+}
