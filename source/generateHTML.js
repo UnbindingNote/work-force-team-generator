@@ -1,10 +1,11 @@
 //generating manager card
 const generateManager = function (manager) {
-    return `
+  return `
     <div class="card employee-card">
       <div class="card-header bg-primary text-white">
           <h2 class="card-title">${manager.getName()}</h2>
-          <h3 class="card-title"><i class="fa fa-address-book" aria-hidden="true"></i>${manager.getRole()}</h3>
+          <h3 class="card-title">
+          <i class="fa fa-address-book" aria-hidden="true"></i>${manager.getRole()}</h3>
       </div>
       <div class="card-body">
           <ul class="list-group">
@@ -15,11 +16,11 @@ const generateManager = function (manager) {
       </div>
   </div>
     `;
-  }
-  
-  //generating engineer card
-  const generateEngineer = function (engineer) {
-    return `
+};
+
+//generating engineer card
+const generateEngineer = function (engineer) {
+  return `
     <div class="card employee-card">
       <div class="card-header bg-primary text-white">
           <h2 class="card-title">${engineer.getName()}</h2>
@@ -33,12 +34,12 @@ const generateManager = function (manager) {
           </ul>
       </div>
   </div>
-    `
-  }
-  
-  //generating intern card
-  const generateIntern = function (intern) {
-    return `
+    `;
+};
+
+//generating intern card
+const generateIntern = function (intern) {
+  return `
     <div class="card employee-card">
       <div class="card-header bg-primary text-white">
           <h2 class="card-title">${intern.getName()}</h2>
@@ -52,41 +53,39 @@ const generateManager = function (manager) {
           </ul>
       </div>
   </div>
-    `
-  };
-  
-  //an array to hold all the cards
-  const employeeCardsArray = [];
-  
-  //pushes the cards to the array depending on their class name
-  const generateHTML = (data) => {
-  
-    for (let i = 0; i < data.length; i++) {
-  
-      const employee = data[i];
-      const role = employee.getRole();
-  
-      switch (role) {
-        case 'Manager':
-          const managerCard = generateManager(employee);
-          employeeCardsArray.push(managerCard);
-          break;
-        case 'Engineer':
-          const engineerCard = generateEngineer(employee);
-          employeeCardsArray.push(engineerCard);
-          break;
-        case 'Intern':
-          const internCard = generateIntern(employee);
-          employeeCardsArray.push(internCard);
-          break;
-      }
+    `;
+};
+
+//an array to hold all the cards
+const employeeCardsArray = [];
+
+//pushes the cards to the array depending on their class name
+const generateHTML = (data) => {
+  for (let i = 0; i < data.length; i++) {
+    const employee = data[i];
+    const role = employee.getRole();
+
+    switch (role) {
+      case "Manager":
+        const managerCard = generateManager(employee);
+        employeeCardsArray.push(managerCard);
+        break;
+      case "Engineer":
+        const engineerCard = generateEngineer(employee);
+        employeeCardsArray.push(engineerCard);
+        break;
+      case "Intern":
+        const internCard = generateIntern(employee);
+        employeeCardsArray.push(internCard);
+        break;
     }
-    return generateTeamMembers(employeeCardsArray.join(''));
   }
-  
-  // Creates a function to generate HTML file with the whole team
-  const generateTeamMembers = function (employeeCardsArray) {
-    return `
+  return generateTeamMembers(employeeCardsArray.join(""));
+};
+
+// Creates a function to generate HTML file with the whole team
+const generateTeamMembers = function (employeeCardsArray) {
+  return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -119,7 +118,7 @@ const generateManager = function (manager) {
     </body>
     </html>
     `;
-  }
-  
-  //exports the generateMarkdown required by other .js files
-  module.exports = generateHTML;
+};
+
+//exports the generateMarkdown required by other .js files
+module.exports = generateHTML;
