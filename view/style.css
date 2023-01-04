@@ -1,4 +1,4 @@
-/* Styling for the cards and the HTML page */
+/* Styling for the HTML page and cards*/
 .jumbotron {
     border-radius: 0;
 }
@@ -10,10 +10,10 @@
     width: 16rem;
 }
 
-.card-body {
-    background-color: rgb(240, 240, 240);
-}
-
 .card-title {
     text-align: center;
+}
+
+.card-body {
+    background-color: rgb(240, 240, 240);
 }
