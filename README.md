@@ -12,7 +12,8 @@
   ## Installation
   npm i
   ## Usage
-  'npm start' in the command line to begin the generator.
+  'npm start' in the command line to begin the generator. <br>
+  [Walkthrough video.](https://youtu.be/UZJEp7-IX2w)
   ## Tests
   npm test
   ## License
