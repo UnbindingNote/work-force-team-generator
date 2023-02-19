@@ -1,7 +1,7 @@
 # Workforce Team Generator
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   ## Description
-  Easy to use generator for tracking members of a team,  starting with the Manager and adding team members as needed. Generates a webpage with individual cards for each member.
+  Easy to use generator for tracking members of a team, starting with the Manager and adding team members as needed. Generates a webpage with individual cards for each member.
   ## Table of Contents
   * [Installation](#installation)
   * [Usage](#usage)
