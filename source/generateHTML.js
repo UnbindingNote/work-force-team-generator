@@ -1,5 +1,5 @@
-//generating manager card
-const generateManager = function (manager) {
+//Manager goes here, details are taken from the Manager.js, because it extended Employee to have extra characteristics, so they get pulled in here, at the manager card, where the manager goes. All that tasty info becomes a card.
+const managerProbably = function (manager) {
   return `
     <div class="card employee-card">
       <div class="card-header bg-primary text-white">
@@ -18,8 +18,8 @@ const generateManager = function (manager) {
     `;
 };
 
-//generating engineer card
-const generateEngineer = function (engineer) {
+//Engineer goes here, details are taken from the Engineer.js, because it extended Employee to have extra characteristics, those get pulled in here, at the engineer card, where the engineer goes. All that spicy info becomes ANOTHER card.
+const likelyEngineer = function (engineer) {
   return `
     <div class="card employee-card">
       <div class="card-header bg-primary text-white">
@@ -37,8 +37,8 @@ const generateEngineer = function (engineer) {
     `;
 };
 
-//generating intern card
-const generateIntern = function (intern) {
+//Intern goes here, details are taken from the Intern.js, because it extended Employee to have extra characteristics, and those get pulled in here, at the intern card, where the intern goes. All that gourmet info becomes - you won't believe it - yet ANOTHER card!
+const internSadly = function (intern) {
   return `
     <div class="card employee-card">
       <div class="card-header bg-primary text-white">
@@ -56,10 +56,10 @@ const generateIntern = function (intern) {
     `;
 };
 
-//an array to hold all the cards
-const employeeCardsArray = [];
+//Don't tell anyone that we did this, cause we had to, can't get away from it unless we sacrifice 3 goats and half of two frogs - which is way beside the point - it makes an empty array for the cards to go into :D
+const maybeArray = [];
 
-//pushes the cards to the array depending on their class name
+//pushes all those delicious cards into that thankfully not awkward empty array, even organizes them by their roles too, because roles are important, and making sense of what each thing does helps alot... so I named Manager as Manager, instead of colStinkface because it should be Manager. 
 const generateHTML = (data) => {
   for (let i = 0; i < data.length; i++) {
     const employee = data[i];
@@ -67,24 +67,24 @@ const generateHTML = (data) => {
 
     switch (role) {
       case "Manager":
-        const managerCard = generateManager(employee);
-        employeeCardsArray.push(managerCard);
+        const managerCard = managerProbably(employee);
+        maybeArray.push(managerCard);
         break;
       case "Engineer":
-        const engineerCard = generateEngineer(employee);
-        employeeCardsArray.push(engineerCard);
+        const engineerCard = likelyEngineer(employee);
+        maybeArray.push(engineerCard);
         break;
       case "Intern":
-        const internCard = generateIntern(employee);
-        employeeCardsArray.push(internCard);
+        const internCard = internSadly(employee);
+        maybeArray.push(internCard);
         break;
     }
   }
-  return generateTeamMembers(employeeCardsArray.join(""));
+  return generateTeamMembers(maybeArray.join(""));
 };
 
-// Creates a function to generate HTML file with the whole team
-const generateTeamMembers = function (employeeCardsArray) {
+// This just returns a whole bunch of html with the team information, the information that filled the cards, that it finds in the array, that were put in by generateHTML, which was filled by the generateCamelcasedroles at the top, which was filled by those extended Employee classes. 
+const generateTeamMembers = function (maybeArray) {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -108,7 +108,7 @@ const generateTeamMembers = function (employeeCardsArray) {
         <div class="container">
             <div class="row">
                 <div class="row team-area col-12 d-flex justify-content-center">
-                    ${employeeCardsArray}
+                    ${maybeArray}
                 </div>
             </div>
         </div>
@@ -120,5 +120,5 @@ const generateTeamMembers = function (employeeCardsArray) {
     `;
 };
 
-//exports the generateMarkdown required by other .js files
+//some other files need the generateHTML to be exported, otherwise it just sits here and gets dirty without being productive. Just sits here, sad and alone while we wonder why things aren't showing up. Lucky we don't have to, because it's being exported right here, to be used and seen by those that need it. Thank you export function. 
 module.exports = generateHTML;

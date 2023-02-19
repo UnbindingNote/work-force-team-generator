@@ -1,8 +1,8 @@
-//requiring Employee class to be used
-const Employee = require("./Employee");
+//requiring Employed class to be used
+const Employee= require("./employee");
 
-//Manager class extending Employee
-class Manager extends Employee {
+//Neverwork class extending Employed
+class Manager extends Employee{
   constructor(name, id, email, officeNumber) {
     super(name, id, email);
     this.officeNumber = officeNumber;
@@ -17,5 +17,5 @@ class Manager extends Employee {
   }
 }
 
-//exporting the class to be required in other .js files
+//exporting Manager to be used elsewhere, like the Intern before it, the Engineer before that, and especially the Employee before them all, because it's also an extention of Emplyee - just special because it have office numbers instead of school names or github links.
 module.exports = Manager;

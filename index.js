@@ -1,17 +1,16 @@
-// Includes packages needed for this application
-const inquirer = require("inquirer"); // third-party inquirer package
-const fs = require("fs"); // reads/writes the files from/to the computer
-const generateHTML = require("./source/generateHTML.js"); // helps it to work with other JS files
-
-//get the module.exports from the other .js files
-const Manager = require("./library/Manager");
+// Include packages 
 const Engineer = require("./library/Engineer");
 const Intern = require("./library/Intern");
+const Manager = require("./library/Manager");
+const fs = require("fs");
+const inquirer = require("inquirer");
+const generateHTML = require("./source/generateHTML.js");
 
-//creating an array to hold all the information passed in
-let teamMembersArray = [];
+//Create an array to hold all the information
+const teamMembers = [];
 
-//questions for managers
+
+//Questions for building manager card
 const managerQuestions = () => {
   inquirer
     .prompt([
@@ -19,12 +18,12 @@ const managerQuestions = () => {
         type: "input",
         name: "name",
         message: `What is the manager's name?`,
-        //validate checks if the user left the console blank or not
+        // validate checks if the console was left empty
         validate: (nameInput) => {
           if (nameInput) {
             return true;
           } else {
-            console.log(`Please enter the manager's name.`);
+            console.log(`Error: cannot be left empty.`);
             return false;
           }
         },
@@ -33,12 +32,11 @@ const managerQuestions = () => {
         type: "input",
         name: "id",
         message: `What is the manager's id?`,
-        //validate checks if the user left the console blank or not
         validate: (idInput) => {
           if (idInput) {
             return true;
           } else {
-            console.log(`Please enter the manager's id.`);
+            console.log(`Error: cannot be left empty.`);
             return false;
           }
         },
@@ -47,12 +45,11 @@ const managerQuestions = () => {
         type: "input",
         name: "email",
         message: `What is the manager's email?`,
-        //validate checks if the user left the console blank or not
         validate: (emailInput) => {
           if (emailInput) {
             return true;
           } else {
-            console.log(`Please enter the manager's email.`);
+            console.log(`Error: cannot be left empty.`);
             return false;
           }
         },
@@ -61,27 +58,26 @@ const managerQuestions = () => {
         type: "input",
         name: "officeNumber",
         message: "What is the manager's office number?",
-        //validate checks if the user left the console blank or not
         validate: (officeNumberInput) => {
           if (officeNumberInput) {
             return true;
           } else {
-            console.log("Please enter the manager's office number.");
+            console.log("Error: cannot be left empty.");
             return false;
           }
         },
       },
     ])
     .then((managerInput) => {
-      const { name, id, email, officeNumber } = managerInput; //object deconstructing
+      const { name, id, email, officeNumber } = managerInput;
       const manager = new Manager(name, id, email, officeNumber);
-      teamMembersArray.push(manager);
-      addTeamMemberQuestion();
+      teamMembers.push(manager);
+      addTeamMember();
     });
 };
 
-//question for whether adding a new team member or not
-const addTeamMemberQuestion = () => {
+//will the user add another new team member or not
+const addTeamMember = () => {
   inquirer
     .prompt([
       {
@@ -91,26 +87,24 @@ const addTeamMemberQuestion = () => {
         choices: [
           "Engineer",
           "Intern",
-          "I do not want to add more team members",
-        ], //prompts user to select between options
+          "No more team members to add",
+        ], //prompts user to select between choices
       },
     ])
     .then((choice) => {
-      //for inquirer the parameter has to be something which is an object here
+
       if (choice.addTeamMember === "Engineer") {
         engineerQuestions();
       } else if (choice.addTeamMember === "Intern") {
         internQuestions();
       } else if (
-        choice.addTeamMember === "I do not want to add more team members"
+        choice.addTeamMember === "No more team members to add"
       ) {
-        // console.log(teamMembersArray);
-        writeToFile("./view/index.html", teamMembersArray);
+        writeToFile("./view/index.html", teamMembers);
       }
     });
 };
 
-//questions for engineers
 const engineerQuestions = () => {
   inquirer
     .prompt([
@@ -118,12 +112,11 @@ const engineerQuestions = () => {
         type: "input",
         name: "name",
         message: `What is the engineer's name?`,
-        //validate checks if the user left the console blank or not
         validate: (nameInput) => {
           if (nameInput) {
             return true;
           } else {
-            console.log(`Please enter the engineer's name.`);
+            console.log(`Error: cannot be left empty.`);
             return false;
           }
         },
@@ -132,12 +125,11 @@ const engineerQuestions = () => {
         type: "input",
         name: "id",
         message: `What is the engineer's id?`,
-        //validate checks if the user left the console blank or not
         validate: (idInput) => {
           if (idInput) {
             return true;
           } else {
-            console.log(`Please enter the engineer's id.`);
+            console.log(`Error: cannot be left empty.`);
             return false;
           }
         },
@@ -146,12 +138,11 @@ const engineerQuestions = () => {
         type: "input",
         name: "email",
         message: `What is the engineer's email?`,
-        //validate checks if the user left the console blank or not
         validate: (emailInput) => {
           if (emailInput) {
             return true;
           } else {
-            console.log(`Please enter the engineer's email.`);
+            console.log(`Error: cannot be left empty.`);
             return false;
           }
         },
@@ -160,26 +151,24 @@ const engineerQuestions = () => {
         type: "input",
         name: "github",
         message: "What is the engineer's GitHub username?",
-        //validate checks if the user left the console blank or not
         validate: (githubInput) => {
           if (githubInput) {
             return true;
           } else {
-            console.log("Please enter the engineer's GitHub username.");
+            console.log("Error: cannot be left empty.");
             return false;
           }
         },
       },
     ])
     .then((engineerInput) => {
-      const { name, id, email, github } = engineerInput; //object deconstructing
+      const { name, id, email, github } = engineerInput;
       const engineer = new Engineer(name, id, email, github);
-      teamMembersArray.push(engineer);
+      teamMembers.push(engineer);
       addTeamMemberQuestion();
     });
 };
 
-//questions for interns
 const internQuestions = () => {
   inquirer
     .prompt([
@@ -187,12 +176,11 @@ const internQuestions = () => {
         type: "input",
         name: "name",
         message: `What is the intern's name?`,
-        //validate checks if the user left the console blank or not
         validate: (nameInput) => {
           if (nameInput) {
             return true;
           } else {
-            console.log(`Please enter the intern's name.`);
+            console.log(`Error: cannot be left empty.`);
             return false;
           }
         },
@@ -201,12 +189,11 @@ const internQuestions = () => {
         type: "input",
         name: "id",
         message: `What is the intern's id?`,
-        //validate checks if the user left the console blank or not
         validate: (idInput) => {
           if (idInput) {
             return true;
           } else {
-            console.log(`Please enter the intern's id.`);
+            console.log(`Error: cannot be left empty.`);
             return false;
           }
         },
@@ -215,12 +202,11 @@ const internQuestions = () => {
         type: "input",
         name: "email",
         message: `What is the intern's email?`,
-        //validate checks if the user left the console blank or not
         validate: (emailInput) => {
           if (emailInput) {
             return true;
           } else {
-            console.log(`Please enter the intern's email.`);
+            console.log(`Error: cannot be left empty.`);
             return false;
           }
         },
@@ -229,42 +215,40 @@ const internQuestions = () => {
         type: "input",
         name: "school",
         message: "What is the intern's school name?",
-        //validate checks if the user left the console blank or not
         validate: (schoolInput) => {
           if (schoolInput) {
             return true;
           } else {
-            console.log("Please enter the intern's school name.");
+            console.log("Error: cannot be left empty.");
             return false;
           }
         },
       },
     ])
     .then((internInput) => {
-      const { name, id, email, school } = internInput; //object deconstructing
+      const { name, id, email, school } = internInput;
       const intern = new Intern(name, id, email, school);
-      teamMembersArray.push(intern);
+      teamMembers.push(intern);
       addTeamMemberQuestion();
     });
 };
 
-// Creates a function to write HTML file
-function writeToFile(fileName, teamMembersArray) {
-  //fileName = "./view/index.html";
-  fs.writeFile(fileName, generateHTML(teamMembersArray), function (err) {
+// Function to write the HTML file
+function writeToFile(fileName, teamMembers) {
+  fs.writeFile(fileName, generateHTML(teamMembers), function (err) {
     if (err) {
       return console.log(err);
     }
-    console.log("index.html is successfully generated!");
+    console.log("index.html has been generated!");
   });
 }
 
-// Creates a function to initialize app
+//initialize the app
 function init() {
   console.log("Welcome to the team generator!");
   console.log("Use 'npm test' to verify the library/ folder");
   managerQuestions();
 }
 
-// Function call to initialize app
+//call to initialize app
 init();

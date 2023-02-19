@@ -1,4 +1,4 @@
-//Employee class
+//Employee class, it's the class, for the employee, will be used elsewhere
 class Employee {
   constructor(name, id, email) {
     this.name = name;
@@ -19,9 +19,9 @@ class Employee {
   }
 
   getRole() {
-    return "Employee";
+    return 'Employee';
   }
 }
 
-//exporting the class to be required in other .js files
+//exporting Employee class, for ease of call, because it'll be used elsewhere, like in the other js pages
 module.exports = Employee;

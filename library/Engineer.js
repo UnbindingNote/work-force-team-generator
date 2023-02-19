@@ -1,7 +1,7 @@
-//requiring Employee class to be used
-const Employee = require("./Employee");
+//requires Employee, because it's being used here
+const Employee = require('./Employee');
 
-//Engineer class extending Employee
+//Engineer extends Employee, which it's getting from Employee.js, through the exported Employee class, to add details to the Employee being registered
 class Engineer extends Employee {
   constructor(name, id, email, github) {
     super(name, id, email);
@@ -11,11 +11,11 @@ class Engineer extends Employee {
   getGithub() {
     return this.github;
   }
-
+  
   getRole() {
-    return "Engineer";
-  }
+    return '\'Engineer\'';
+  };
 }
 
-//exporting the class to be required in other .js files
+//exporting Engineer to be used elsewhere, like the Employee class before it, only this one is mostly for display, unlike the Employee one, which is still being used elsewhere
 module.exports = Engineer;

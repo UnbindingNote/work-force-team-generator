@@ -1,6 +1,7 @@
-const Manager = require("../library/Manager"); //requiring the class to test
+//requires the Manager class to test, because it's testing the parts of the Manager generation (which extends on Employee, but is different from both Engineer and Intern), to be sure information is entering correctly, which it hopefully is, otherwise the test yells at me, because then there's something wrong and it needs to be fixed, so we have the tests to test that.
+const Manager = require("../library/Manager"); 
 
-//describing the test and testing each property and methods for the class
+//dictates the order of testing, the testing will go in this order, because that's the order it's been written, so it will run in this order, which is the most beneficial order, so the test is structured in this order, because it's the order information will be entered, so I'd like it to test the inputs in that order, so it is structured this way.
 describe("Manager Test", () => {
     it("should check if manager instance returns as an object", () => {
         const manager = new Manager();
