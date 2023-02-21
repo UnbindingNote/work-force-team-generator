@@ -1,7 +1,7 @@
-//requiring Employed class to be used
+//Requires Employee, because it'll be used by Manager
 const Employee= require("./employee");
 
-//Neverwork class extending Employed
+//Manager is extending Employee, that it get from Employee's export, so it can add extra info to it, which will be used elsewhere
 class Manager extends Employee{
   constructor(name, id, email, officeNumber) {
     super(name, id, email);
