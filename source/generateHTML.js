@@ -41,7 +41,7 @@ const likelyEngineer = function (engineer) {
 const internSadly = function (intern) {
   return `
     <div class="card employee-card">
-      <div class="card-header bg-primary text-white">
+      <div class="card-header bg-info text-white">
           <h2 class="card-title">${intern.getName()}</h2>
           <h3 class="card-title"><i class="fa fa-address-card" aria-hidden="true"></i>${intern.getRole()}</h3>
       </div>
@@ -100,7 +100,7 @@ const generateTeamMembers = function (maybeArray) {
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 jumbotron mb-3 team-heading bg-danger">
+                <div class="col-12 jumbotron mb-3 team-heading bg-success">
                     <h1 class="text-center text-white">The Team</h1>
                 </div>
             </div>
