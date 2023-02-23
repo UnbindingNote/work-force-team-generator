@@ -165,7 +165,7 @@ const engineerQuestions = () => {
       const { name, id, email, github } = engineerInput;
       const engineer = new Engineer(name, id, email, github);
       teamMembers.push(engineer);
-      addTeamMemberQuestion();
+      addTeamMember();
     });
 };
 
@@ -230,7 +230,7 @@ const internQuestions = () => {
       const { name, id, email, school } = internInput;
       const intern = new Intern(name, id, email, school);
       teamMembers.push(intern);
-      addTeamMemberQuestion();
+      addTeamMember();
     });
 };
 
