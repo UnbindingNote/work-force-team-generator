@@ -1,12 +1,11 @@
-// Include packages 
 const Engineer = require("./library/Engineer");
+const fs = require("fs");
+const generateHTML = require("./source/generateHTML.js");
+const inquirer = require("inquirer");
 const Intern = require("./library/Intern");
 const Manager = require("./library/Manager");
-const fs = require("fs");
-const inquirer = require("inquirer");
-const generateHTML = require("./source/generateHTML.js");
 
-//Create an array to hold all the information
+// need/want(mostly need) an array to hold all the info
 const teamMembers = [];
 
 
@@ -18,7 +17,7 @@ const managerQuestions = () => {
         type: "input",
         name: "name",
         message: `What is the manager's name?`,
-        // validate checks if the console was left empty
+        // v- can't leave things blank or the building yells at you
         validate: (nameInput) => {
           if (nameInput) {
             return true;
@@ -87,8 +86,8 @@ const addTeamMember = () => {
         choices: [
           "Engineer",
           "Intern",
-          "No more team members to add",
-        ], //prompts user to select between choices
+          "Done",
+        ], //^^^ options, occurs after each question segment, so the user has options and isn't trapped filling a team with only managers and no 'let me out!' option
       },
     ])
     .then((choice) => {
@@ -98,14 +97,14 @@ const addTeamMember = () => {
       } else if (choice.addTeamMember === "Intern") {
         internQuestions();
       } else if (
-        choice.addTeamMember === "No more team members to add"
+        choice.addTeamMember === "Done"
       ) {
         writeToFile("./view/index.html", teamMembers);
       }
     });
 };
 
-// Questions for the Engineer, if user chooses to add an Engineer.
+// Engineer questionaire, wheeeeeeeeeeeeeeeeeeeeee.
 const engineerQuestions = () => {
   inquirer
     .prompt([

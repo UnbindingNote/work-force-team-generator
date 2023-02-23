@@ -1,7 +1,7 @@
 {
   "name": "work-force-team-generator",
   "version": "1.0.0",
-  "description": "generator for creating and viewing cards with information about the employed",
+  "description": "generator for creating and viewing cards with information about a work force, it's in the name. ",
   "main": "index.js",
   "directories": {
     "lib": "library",
